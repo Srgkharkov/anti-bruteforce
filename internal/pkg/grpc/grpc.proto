@@ -1,9 +1,10 @@
 syntax = "proto3";
 package ab_grpc;
 option go_package = "./;grpcpb";
-service anti_brutforce {
+
+service anti_bruteforce {
   // Search returns a Google search result for the query.
-  rpc tryAuth(Request) returns (Result) {
+  rpc AccessRequest(Request) returns (Result) {
   }
   rpc clearBucket(Request) returns (Result) {
   }
@@ -16,19 +17,24 @@ service anti_brutforce {
   rpc DelFromBlackList(SubNet) returns (Result) {
   }
 }
+
 enum Status {
   STATUS_UNSPECIFIED = 0;
   STATUS_TRUE = 1;
   STATUS_FALSE = 2;
   STATUS_ERROR = 3;
 }
+
 message Request {
   string login = 1;
   string pass = 2;
   string ip = 3;
-}message SubNet {
+}
+
+message SubNet {
   string subnet = 1;
 }
+
 message Result {
   Status status = 1;
 }

@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  app-anti-bruteforce:
+    build: ./
+    command: ./cmd/anti-bruteforce/app-anti-bruteforce
+    ports:
+      - 8080:50051
